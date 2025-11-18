@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PersonControllerTests {
 
-    private static final String API_PATH = "/api/v1";
+    private static final String API_PATH = "/api";
 
     @Autowired
     private TestRestTemplate restTemplate;

@@ -1,0 +1,32 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sample-app-rhdh
+  title: sample-app-rhdh
+  annotations:
+    janus-idp.io/tekton: sample-app-rhdh
+    tektonci/build-namespace: demo
+    tekton.dev/cicd : "true"
+    quay.io/repository-slug: pminkows/sample-app-rhdh
+    github.com/project-slug: piomin/sample-app-rhdh
+    sonarqube.org/project-key: piomin_sample-app-rhdh
+    backstage.io/kubernetes-id: sample-app-rhdh
+    backstage.io/techdocs-ref: dir:.
+    argocd/app-name: sample-app-rhdh
+    prometheus.io/rule: container_memory_usage_bytes{pod=~"sample-app-rhdh-.*"}|pod,rate(container_cpu_usage_seconds_total{pod=~"sample-app-rhdh-.*"}[5m])|pod
+  links:
+    - url: https://devspaces.apps.pminkows.95az.p1.openshiftapps.com#https://github.com/piomin/sample-app-rhdh
+      title: 🚀 Develop App
+      icon: launch
+  tags:
+    - spring-boot
+    - java
+    - maven
+    - tekton
+    - argocd
+    - renovate
+    - sonarqube
+spec:
+  type: service
+  owner: piomin
+  lifecycle: experimental

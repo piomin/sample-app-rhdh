@@ -1,0 +1,26 @@
+version: 2.1
+
+jobs:
+  build-and-test:
+    docker:
+      - image: cimg/openjdk:21.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - maven-deps-{{ checksum "pom.xml" }}
+            - maven-deps-
+      - run:
+          name: Run Maven tests
+          command: mvn test
+      - save_cache:
+          key: maven-deps-{{ checksum "pom.xml" }}
+          paths:
+            - ~/.m2
+      - store_test_results:
+          path: target/surefire-reports
+
+workflows:
+  pipeline:
+    jobs:
+      - build-and-test
